@@ -1,0 +1,21 @@
+<h1>New article</h1>
+
+<!--i could use html normal form, but i cant retrieve the value of the input D:-->
+<!--<form action="/articles" method="POST">-->
+<!--    <input type="text" name=""></input>-->
+<!--</form>-->
+
+<%= form_for @article do |f| %>
+    <p>
+        <!--instance variable, object name -->
+        <%= f.label :title %> <br>
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :description %> <br>
+        <%= f.text_area :description %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>

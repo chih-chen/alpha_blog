@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   #home page    controller: page / template: home.html.erb
 #   get("/", to: "page#home")
   #or can simply use:
-  root "page#home"
+  root "pages#home"
   
-  get("/about",to: "page#about")
+  get("/about",to: "pages#about")
   
   # resourses: automatically sets the new/edit/destroy path for me !!!!
   resources :articles

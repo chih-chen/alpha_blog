@@ -1,2 +1,42 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+   padding-top: 75px;
+}
+
+#brand {
+   font-size:1.5em;
+   color:white;
+}
+
+.jumbotron {
+   background-image: asset-url("images.jpg");
+   background-size:cover;
+   height: 500px;
+   text-align:center;
+}
+
+.jumbotron h1 {
+   color:white;
+   margin-top: 130px;
+   margin-bottom: 0.5em;
+}
+
+.jumbotron a {
+   font-size:30px;
+}
+
+#form_container {
+   width:45%;
+   margin:0 auto;
+}
+
+#my_footer {
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   padding: 1rem;
+   text-align: center;
+}

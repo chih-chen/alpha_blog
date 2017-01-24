@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
     end
     
     def create
-        @article = Article.new(title: params[:article][:title], description: params["article"]["description"])
+        @article = Article.new({title: params[:article][:title], description: params["article"]["description"]})
         if @article.save
             flash[:notice] = "Article successfuly created!"
             redirect_to article_path(@article)
@@ -35,5 +35,12 @@ class ArticlesController < ApplicationController
     def index
         @articles = Article.all #grabs all article from the db, return an array
     end
-        
+       
+    def destroy
+        @article = Article.find(params[:id])
+        if @article.destroy
+            flash[:notice] = "Article successfuly deleted!"
+            redirect_to articles_path
+        end
+    end
 end

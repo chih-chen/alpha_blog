@@ -1,16 +1,15 @@
 <!--form partial!!-->
-
-<% if @article.errors.any? %>
-    <% @article.errors.full_messages.each do |msg|%>
-        <ul>
-            <li><%= msg %></li>    
-        </ul>
-    <%end%>
-<%end%>
     
 <div class="container" id="form_container">
-    <h2>New article:</h2>
-    
+
+    <% if @article.errors.any? %>
+        <div class="alert alert-danger">
+            <% @article.errors.full_messages.each do |msg|%>
+              <p></p><%= msg %></p>
+            <%end%>
+        </div>
+    <%end%>
+
     <%= form_for @article do |f|%>
         <div class="form-group">
             <label><%= f.label :title, "Title" %></label>
@@ -18,7 +17,7 @@
         </div>
         <div class="form-group">
             <label><%= f.label :description, "Description" %></label>
-            <%= f.text_area :description, class:"form-control",rows:5, placeholder: "Description" %>
+            <%= f.text_area :description, class:"form-control",rows:10, placeholder: "Description" %>
         </p>
         <div class="form-group">
             <%= f.submit class:"btn btn-success" %> <!-- automatically POST request -->

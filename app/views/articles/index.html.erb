@@ -1,1 +1,20 @@
 <h1>Index page!</h1>
+
+<p><%= link_to "Create new article", "articles/new"%></p>
+
+<table>  
+   <thead>
+      <th>Title</th>
+      <th>Description</th>
+   </thead>
+   <tbody>
+      <% @articles.each do |art|%>
+         <tr>
+            <td><%= art.title %></td>
+            <td><%= art.description %></td>
+            <td><%= link_to "Show more", "/articles/#{art.id}"%></td>
+            <td><%= link_to "Edit", "/articles/#{art.id}/edit"%></td>
+         </tr>
+      <% end %>
+   </tbody>
+</table>

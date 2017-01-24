@@ -22,7 +22,6 @@
         <%= f.label :description, "Description" %> <br>
         <%= f.text_area :description %>
     </p>
-    <p>
-        <%= f.submit %> <!-- automatically POST request -->
-    </p>
+    <p><%= f.submit %> <!-- automatically POST request --></p>
+    <p><%= link_to "back", "/articles"%></p>
 <% end %>

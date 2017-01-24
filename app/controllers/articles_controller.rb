@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
     end
     
     def index
-        
+        @articles = Article.all #grabs all article from the db, return an array
     end
         
 end

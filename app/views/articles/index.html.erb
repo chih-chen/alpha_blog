@@ -1,21 +1,23 @@
-<h1>Index page!</h1>
+<h1>All articles</h1>
 
-<p><%= link_to "Create new article", "articles/new"%></p>
 
-<table>  
-   <thead>
-      <th>Title</th>
-      <th>Description</th>
-   </thead>
-   <tbody>
-      <% @articles.each do |art|%>
-         <tr>
-            <td><%= art.title %></td>
-            <td><%= art.description %></td>
-            <td><%= link_to "Show more", "/articles/#{art.id}"%></td>
-            <td><%= link_to "Edit", "/articles/#{art.id}/edit"%></td>
-            <td><%= link_to "Delete", "/articles/#{art.id}", method: :delete, data: {confirm: "Are you sure?"}%></td>
-         </tr>
-      <% end %>
-   </tbody>
-</table>
+
+<% @articles.each do |art|%>
+      <div class="well well-sm">
+         <div class="row">
+            <div class="col-md-12">
+               <p class="article-title"><%= link_to art.title, "/articles/#{art.id}"%></p>
+               <p class="article-body"><%= truncate(art.description, length: 150)%></p>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <%= link_to "Edit", edit_article_path(art), class:"btn btn-xs btn-primary"%>
+               <%= link_to "Delete",article_path(art), 
+                                    method: :delete, 
+                                    data: {confirm: "Confirm delete?"}, 
+                                    class:"btn btn-xs btn-danger"%>
+            </div>
+         </div>
+      </div>
+<% end %>

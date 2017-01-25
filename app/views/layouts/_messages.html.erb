@@ -1,8 +1,7 @@
-<%if flash %>
-      <% flash.each do |name, msg|%>
-         <div class='alert alert-<%="#{name}"%>'>
-         <a href="#" class="close" data-dismiss="alert">×</a> <!-- add the x to the alert message -->
-           <p><%= msg %></p>
-         </div>
-      <% end %>
+
+<% flash.each do |name, msg|%>
+   <div class='alert alert-<%="#{name}"%>'>
+   <a href="#" class="close" data-dismiss="alert">×</a> <!-- add the x to the alert message -->
+     <p><%= msg %></p>
+   </div>
 <% end %>

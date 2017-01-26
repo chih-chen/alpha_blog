@@ -1,29 +1,3 @@
 <h1 align="center">All articles</h1>
 
-<% @articles.each do |art|%>
-      <div class="well well-sm">
-         <div class="row">
-            <div class="col-md-12">
-               <p class="article-title"><%= link_to art.title, "/articles/#{art.id}"%></p>
-               <p class="article-body"><%= truncate(art.description, length: 150)%></p>
-               <div>
-                  <small>
-                     Created by: <%=art.user.username if art.user%>  <!-- :DDDD -->
-                     <%= time_ago_in_words(art.created_at)%> ago | 
-                     Last update: <%= time_ago_in_words(art.updated_at)%> ago
-                  </small>
-               </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-12">
-               <hr>
-               <%= link_to "Edit", edit_article_path(art), class:"btn btn-xs btn-primary"%>
-               <%= link_to "Delete",article_path(art), 
-                                    method: :delete, 
-                                    data: {confirm: "Confirm delete?"}, 
-                                    class:"btn btn-xs btn-danger"%>
-            </div>
-         </div>
-      </div>
-<% end %>
+<%= render "show_articles", obj: @articles%>

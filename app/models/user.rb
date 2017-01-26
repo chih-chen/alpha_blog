@@ -14,4 +14,6 @@ class User < ActiveRecord::Base #case sensitive, ignore the capitilize letter, s
              presence:true,
              uniqueness: {case_sensitive:false}, 
              format: {with: VALID_EMAIL_REGEX}
+             
+   has_secure_password
 end

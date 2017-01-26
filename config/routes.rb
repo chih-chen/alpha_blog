@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   get("/about",to: "pages#about")
   
   # resourses: automatically sets the new/edit/destroy path for me !!!!
+  #article routes 
   resources :articles
+  
+  #user routes
+  get("/signup", to: "users#new")
+  #post("/users", to: "users#create")
+  resources :users, except: [:new]
   
   
 end

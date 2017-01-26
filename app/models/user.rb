@@ -10,7 +10,7 @@ class User < ActiveRecord::Base #case sensitive, ignore the capitilize letter, s
    #search for email regular expression, with the expression, u can verify if an email is valid ou not          
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
    
-   validades :email, 
+   validates :email, 
              presence:true,
              uniqueness: {case_sensitive:false}, 
              format: {with: VALID_EMAIL_REGEX}

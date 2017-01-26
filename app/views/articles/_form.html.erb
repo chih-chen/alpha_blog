@@ -2,13 +2,7 @@
     
 <div class="container middle">
 
-    <% if @article.errors.any? %>
-        <div class="alert alert-danger">
-            <% @article.errors.full_messages.each do |msg|%>
-              <p></p><%= msg %></p>
-            <%end%>
-        </div>
-    <%end%>
+    <%= render "shared/errors", obj: @article%>
 
     <%= form_for @article do |f|%>
         <div class="form-group">

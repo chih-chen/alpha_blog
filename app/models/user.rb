@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base #case sensitive, ignore the capitilize letter, so Joe is the same as joe
+   has_many :articles
+   #performs an action before saving into the database, turn into downcase
+   before_save {self.email = email.downcase}
    validates :username, 
              presence: true, 
              uniqueness: {case_sensitive: false},

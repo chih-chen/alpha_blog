@@ -34,6 +34,10 @@ class UsersController < ApplicationController
       # @user_articles = Article.find(params[:id])
    end
    
+   def index
+      @users = User.all
+   end
+   
    #this method gives me all attr from the params
    #for safety, we use this method which will permit
    # only these 3 params 

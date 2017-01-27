@@ -3,9 +3,10 @@
       <%= gravatar_for @user, size: 200 %>
    </div>
    <div class="col-xs-4">
-      <h1 class="profile"><%=@user.username%></h1>
+      <h1 class="profile_name"><%=@user.username%></h1>
       <p><i class="fa fa-envelope" aria-hidden="true"></i> <%=@user.email%></p>
    </div>
 </div>
 <hr class="style2">
+<h3><%=@user.username%>'s articles:</h3>
 <%= render "articles/show_articles", obj: @user.articles%>

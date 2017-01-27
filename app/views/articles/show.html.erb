@@ -1,6 +1,7 @@
 <h1 align="center"><%=@article.title%></h1>
 <hr class="style">
 <p><%=simple_format(@article.description)%></p>
+<p><strong>Author: <em><%=link_to @article.user.username, user_path(@article.user)%></em></strong></p>
 <hr class="style">
 <div>
    <%= link_to "Edit", edit_article_path(@article), class:"btn btn-sm btn-primary"%>

@@ -10,12 +10,12 @@
                      <%= time_ago_in_words(art.created_at)%> ago | 
                      Last update: <%= time_ago_in_words(art.updated_at)%> ago
                   </small>
+                  <hr style="margin-top:10px; margin-bottom:10px;">
                </div>
             </div>
          </div>
          <div class="row">
             <div class="col-md-12">
-               <hr>
                <%= link_to "Edit", edit_article_path(art), class:"btn btn-xs btn-primary"%>
                <%= link_to "Delete",article_path(art), 
                                     method: :delete, 

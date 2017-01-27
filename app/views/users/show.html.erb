@@ -9,4 +9,5 @@
 </div>
 <hr class="style2">
 <h3><%=@user.username%>'s articles:</h3>
-<%= render "articles/show_articles", obj: @user.articles%>
+<%= render "articles/show_articles", obj: @user_articles %>
+<div align="center"><%= will_paginate @user_articles%></div>

@@ -3,4 +3,4 @@
 <%= render "show_articles", obj: @articles%>
 
 <!--show up only if there are enough articles to next page-->
-<div align="center"><%= will_paginate %></div>
+<div align="center"><%= will_paginate @articles%></div>

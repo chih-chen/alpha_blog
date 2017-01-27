@@ -31,11 +31,12 @@ class UsersController < ApplicationController
    
    def show 
       @user = User.find(params[:id])
-      # @user_articles = Article.find(params[:id])
+      @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
    end
    
    def index
-      @users = User.all
+      # @users = User.all
+      @users = User.paginate(page: params[:page],per_page: 5)
    end
    
    #this method gives me all attr from the params

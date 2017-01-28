@@ -1,11 +1,19 @@
 <h1 align="center"><%=@article.title%></h1>
 <hr class="style">
 <p><%=simple_format(@article.description)%></p>
-<p><strong>Author: <em><%=link_to @article.user.username, user_path(@article.user)%></em></strong></p>
+<p>
+   <strong>Author: 
+      <em>
+         <%=link_to @article.user.username, user_path(@article.user)%>
+      </em>
+   </strong>
+</p>
 <hr class="style">
-<div>
-   <%= link_to "Edit", edit_article_path(@article), class:"btn btn-sm btn-primary"%>
-   <%= link_to "Delete",article_path(@article), method: :delete, data: {confirm: "Confirm delete?"}, class:"btn btn-sm btn-danger"%>
-</div>
+<% if logged_in? && @article.user == current_user%>
+   <div>
+      <%= link_to "Edit", edit_article_path(@article), class:"btn btn-sm btn-primary"%>
+      <%= link_to "Delete",article_path(@article), method: :delete, data: {confirm: "Confirm delete?"}, class:"btn btn-sm btn-danger"%>
+   </div>
+<%end%>
 <br/>
-<p><%= link_to "Back", articles_path%></p>
+<p><%= link_to "Back to articles", articles_path%></p>

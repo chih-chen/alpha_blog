@@ -13,15 +13,17 @@
                </div>
             </div>
          </div>
-         <div class="row">
-            <div class="col-md-12">
-               <hr style="margin-bottom:10px; margin-top:10px;">
-               <%= link_to "Edit", edit_article_path(art), class:"btn btn-xs btn-primary"%>
-               <%= link_to "Delete",article_path(art), 
-                                    method: :delete, 
-                                    data: {confirm: "Confirm delete?"}, 
-                                    class:"btn btn-xs btn-danger"%>
+         <% if logged_in? && art.user == current_user %> <!-- current_user returns a User obj -->
+            <div class="row">
+               <div class="col-md-12">
+                  <hr style="margin-bottom:10px; margin-top:10px;">
+                  <%= link_to "Edit", edit_article_path(art), class:"btn btn-xs btn-primary"%>
+                  <%= link_to "Delete",article_path(art), 
+                                       method: :delete, 
+                                       data: {confirm: "Confirm delete?"}, 
+                                       class:"btn btn-xs btn-danger"%>
+               </div>
             </div>
-         </div>
+         <%end%>
       </div>
 <% end %>

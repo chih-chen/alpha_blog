@@ -29,11 +29,15 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Register",signup_path%></li>
-        <li><a href="/login">Sign in <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
-        <li>
-          <%= link_to raw("Sign out <i class='fa fa-sign-out' aria-hidden='true'></i>"), logout_path, method: :delete %>
-        </li>
+        <% if !logged_in? %>
+          <li><%= link_to "Register",signup_path%></li>
+          <li><a href="/login">Sign in <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+        <% else %>
+          <li><%= link_to "Profile", "/users/#{current_user.id}"%></li>
+          <li>
+            <%= link_to raw("Sign out <i class='fa fa-sign-out' aria-hidden='true'></i>"), logout_path, method: :delete %>
+          </li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

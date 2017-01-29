@@ -13,7 +13,7 @@
                <h1><%=link_to u.username, "/users/#{u.id}" %></h1>
                <p>Articles <span class="badge"><%=u.articles.count%></span></p>
             </div>
-            <% if current_user && current_user.admin? && !u.admin?%>
+            <% if logged_in? && current_user.admin? && !u.admin?%>
                <div class="col-xs-4" style="margin-top: 2.7em;">
                   <%= link_to "Delete account", "/users/#{u.id}", method: :delete, data: {confirm: "Are you sure?"}%>
                </div>

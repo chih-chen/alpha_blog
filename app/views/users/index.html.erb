@@ -1,20 +1,26 @@
 <h1 align="center">All users</h1>
-
-<% @users.each do |u|%>
-   <div class="well well-sm">
-      <div class="row">
-         <div class="col-xs-2 text-center">
-            <div class="vert-align">
-               <%= link_to gravatar_for(u), user_path(u) %>
-               <%=%>
+<div class="middle">
+   <% @users.each do |u|%>
+      <div class="well well-sm">
+         <div class="row">
+            <div class="col-xs-2 text-center">
+               <div class="vert-align">
+                  <%= link_to gravatar_for(u), user_path(u) %>
+                  <%=%>
+               </div>
             </div>
-         </div>
-         <div class="col-xs-4">
-            <h1><%=link_to u.username, "/users/#{u.id}" %></h1>
-            <p>Articles <span class="badge"><%=u.articles.count%></span></p>
+            <div class="col-xs-4">
+               <h1><%=link_to u.username, "/users/#{u.id}" %></h1>
+               <p>Articles <span class="badge"><%=u.articles.count%></span></p>
+            </div>
+            <% if current_user && current_user.admin? && !u.admin?%>
+               <div class="col-xs-4" style="margin-top: 2.7em;">
+                  <%= link_to "Delete account", "/users/#{u.id}", method: :delete, data: {confirm: "Are you sure?"}%>
+               </div>
+            <%end%>
          </div>
       </div>
-   </div>
-<% end %>
-
-<div align="center"><%= will_paginate %></div>
+   <% end %>
+   
+   <div align="center"><%= will_paginate %></div>
+</div>

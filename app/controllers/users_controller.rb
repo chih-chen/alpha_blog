@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
    
-   before_action :set_user, only: [:edit, :update, :show]
-   before_action :require_user, only: [:edit, :update]
+   before_action :set_user, only: [:edit, :update, :show, :destroy]
+   before_action :require_user, only: [:edit, :update, :destroy]
    
    def new
       @user = User.new
@@ -41,6 +41,24 @@ class UsersController < ApplicationController
    def index
       # @users = User.all
       @users = User.paginate(page: params[:page],per_page: 5)
+   end
+   
+   def destroy
+      if !@user.admin? 
+         if !current_user.admin?  #deleting own account as an normal user
+            @user.destroy
+            flash[:success] = "User and user's articles successfuly deleted!"
+            session[:user_id] = nil 
+            redirect_to articles_path  
+         else #deleting accounts as an admin
+            @user.destroy
+            flash[:success] = "User and user's articles successfuly deleted!"
+            redirect_to users_path
+         end
+      else
+         flash[:info] = "Can't delete an admin"
+         redirect_to user_path(@user)
+      end
    end
    
    #this method gives me all attr from the params

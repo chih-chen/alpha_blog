@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       else
          # if @article, because i am using this same function to user also. 
          #At users, i dont have @article variable, will raise error
-         if @article && current_user != @article.user 
+         if @article && current_user != @article.user && !current_user.admin?
             #I have @article because there is another before_action that sets all @article 
             flash[:danger] = "You can edit/delete only your own articles!"
             redirect_to root_path

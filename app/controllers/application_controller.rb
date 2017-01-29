@@ -20,8 +20,23 @@ class ApplicationController < ActionController::Base
       if !logged_in?
          flash[:danger] = "Please log in first."
          redirect_to "/login"
+      else
+         # if @article, because i am using this same function to user also. 
+         #At users, i dont have @article variable, will raise error
+         if @article && current_user != @article.user 
+            #I have @article because there is another before_action that sets all @article 
+            flash[:danger] = "You can edit/delete only your own articles!"
+            redirect_to root_path
+         else
+            # if @user, because i am using this same function to article also. 
+            # At articles, i dont have @user variable, will raise error
+            if @user && current_user != @user
+               #I have @article because there is another before_action that sets all @article
+               flash[:danger] = "You can edit only your own profile!"
+               redirect_to root_path
+            end
+         end
       end
    end
    
-  
 end

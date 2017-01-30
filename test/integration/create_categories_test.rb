@@ -2,8 +2,14 @@ require "test_helper"
 
 class CreateCategoriesTest < ActionDispatch::IntegrationTest
    
-   test "get new category form and create category" do
+   def setup
+      @user = User.create(username:"Admin", email: "admin@admin.com", password: "pass", admin: true)
+   end
+   
+   test "get new category form and create category once logged in as admin" do
       ### simulating a addition of a new category, user behavior ###
+      # session[:user_id] = @user.id ==== In here I don't have session access
+      sign_in(@user, "pass")
       # get the new category path - new form 
       get new_category_path
       # afirm/assert the template
@@ -26,6 +32,7 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
    end
    
    test "invalid category submission results in failure" do
+      sign_in(@user,"pass")
       get new_category_path
       assert_template "categories/new"
       

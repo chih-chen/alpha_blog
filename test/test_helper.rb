@@ -7,4 +7,12 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  # simulating user log in
+  def sign_in(user,password)
+    #post to login path - which is the session create action
+    # passing the params to log in
+    post login_path, session: {email: user.email, password: password}
+  end
+  
 end

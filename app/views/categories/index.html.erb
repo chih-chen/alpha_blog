@@ -1,0 +1,13 @@
+<h1 align="center">All categories</h1>
+<br>
+<div class="list-group" align="center">
+   <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+         <% @categories.each do |cat| %>
+            <%= link_to "#{cat.name}", "/categories/#{cat.id}", class:"list-group-item"%>
+         <%end%>
+      </div>
+   </div>
+</div>
+<div align="center"><%= will_paginate %></div>
+

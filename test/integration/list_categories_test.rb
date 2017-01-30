@@ -1,16 +1,17 @@
 require "test_helper"
 
-class CreateCategoriesTest < ActionDispatch::IntegrationTest
+class ListCategoriesTest < ActionDispatch::IntegrationTest
    
    def setup 
-      @category = Category.create(name:"books")
+      @category = Category.create(name:"sports")
       @category2 = Category.create(name:"programming")
    end
    
    test "should show categories listing" do
       get categories_path
       assert_template "categories/index"
-      # verify if lists all categories, at the same time, see if they are links to the show page
+      # verify if lists all categories, at the same time,
+      # see if they are links to the show page
       # 1 arg - refers to anchor tags
       # 2 arg - the href should go to category_path
       # 3 arg - the link text should display the name of the category

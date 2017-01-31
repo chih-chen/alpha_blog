@@ -10,7 +10,9 @@ class ArticlesController < ApplicationController
     end
     
     def create
-        @article = Article.new(title: params[:article][:title], description: params["article"]["description"])
+        # i could do like this, but not safe either practical - solution: define a function
+        # @article = Article.new(title: params[:article][:title], description: params["article"]["description"])
+        @article = Article.new(article_params) # it autom adds the category and saves everything
         @article.user = current_user
         if @article.save
             flash[:success] = "Article successfuly created!"
@@ -30,7 +32,7 @@ class ArticlesController < ApplicationController
     
     def update
         # @article = Article.find(params[:id])
-        if @article.update(title: params[:article][:title], description: params[:article][:description])
+        if @article.update(article_params)
             flash[:success] = "Article successfuly updated!" 
             redirect_to article_path(@article)
         else
@@ -52,6 +54,10 @@ class ArticlesController < ApplicationController
     end
     
 ############################ FUNCTION DEFINITION ############################### 
+    def article_params
+      params.require(:article).permit(:title,:description,:category_ids=>[]) #indicates that will come as array
+    end
+    
     def set_article
       return @article = Article.find(params[:id])
     end

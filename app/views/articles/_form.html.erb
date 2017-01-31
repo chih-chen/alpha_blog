@@ -12,11 +12,21 @@
         <div class="form-group">
             <label><%= f.label :description, "Description" %></label>
             <%= f.text_area :description, class:"form-control",rows:10, placeholder: "Description" %>
-        </p>
+        </div>
+        <div class="row">
+            <!--undestand method as argument-->
+            <!--object, method, collection, value_method, text_method, options = {}, html_options = {}-->
+            <!--The :value_method and :text_method parameters are methods to be called on each member of collection. 
+            <!--The return values are used as the value attribute and contents of each check box tag, respectively. -->
+            <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+                <div class="col-xs-3 form-group">
+                    <%= b.label(class:"checkbox-inline") {b.check_box + b.text} %>
+                </div>
+            <%end%>
+        </div>
         <div class="form-group">
             <%= f.submit class:"btn btn-success" %> <!-- automatically POST request -->
         </div>
-        
         <%= link_to "Back", :back %>
     
     <% end %>

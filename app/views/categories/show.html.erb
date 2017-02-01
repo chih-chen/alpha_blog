@@ -1,4 +1,11 @@
-<h1 align="center">Category - <%=@category.name.upcase%></h1>
+<h1 align="center">
+   Category: <%=@category.name%>
+   <% if logged_in? && current_user.admin? %>
+      <a href="/categories/<%=@category.id%>/edit">
+         <i class='fa fa-pencil' aria-hidden='true'></i>
+      </a>
+   <% end %>
+</h1>
 <br>
 
 <%= render "articles/show_articles", obj: @category_articles%>

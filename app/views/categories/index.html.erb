@@ -7,7 +7,7 @@
             <a href="/categories/<%=cat.id%>" class="list-group-item">
                <%=cat.name%>
                <span class="badge">
-                  <%=cat.articles.count%>
+                  <%=pluralize(cat.articles.count, "article")%> 
                </span>
             </a>
          <%end%>

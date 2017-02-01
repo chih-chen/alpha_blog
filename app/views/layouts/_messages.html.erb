@@ -1,7 +1,7 @@
 
 <% flash.each do |name, msg|%>
    <div class='alert alert-<%="#{name}"%>'>
-   <a href="#" class="close" data-dismiss="alert">×</a> <!-- add the x to the alert message -->
+   <a href="#" class="close" data-dismiss="alert">&times;</a> <!-- add the x to the alert message -->
      <p><%= msg %></p>
    </div>
 <% end %>

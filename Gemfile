@@ -14,7 +14,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.0'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -42,9 +42,19 @@ gem 'rails-controller-testing'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :production do
+  # use postgre database
+  gem "pg"
+  #12 factor is a way to organize a web application according to rules defined by Heroku. 
+  #The 12-factor approach is aimed to maximize portability and minimize 
+  #divergence between development and production.
+  gem "rails_12factor"
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'sqlite3'
 end
 
 group :development do

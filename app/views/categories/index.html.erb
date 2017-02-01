@@ -1,10 +1,15 @@
 <h1 align="center">All categories</h1>
 <br>
-<div class="list-group" align="center">
+<div class="list-group" >
    <div class="row">
       <div class="col-md-4 col-md-offset-4">
          <% @categories.each do |cat| %>
-            <%= link_to "#{cat.name}", "/categories/#{cat.id}", class:"list-group-item"%>
+            <a href="/categories/<%=cat.id%>" class="list-group-item">
+               <%=cat.name%>
+               <span class="badge">
+                  <%=cat.articles.count%>
+               </span>
+            </a>
          <%end%>
       </div>
    </div>

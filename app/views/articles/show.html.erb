@@ -3,11 +3,19 @@
 <p><%=simple_format(@article.description)%></p>
 <p>
    <strong>Author: 
-      <em>
-         <%=link_to @article.user.username, user_path(@article.user)%>
-      </em>
+      <em><%=link_to @article.user.username, user_path(@article.user)%></em>
    </strong>
 </p>
+<% if @article.categories.any? %>
+   <span><strong>Categories: </strong></span>
+   <% @article.categories.each do |category|%>
+      <span class="label label-info">
+         <%= link_to category.name, 
+                     category_path(category), 
+                     style:"color:white;font-size:12px;"%>&nbsp;</span>
+   <%end%>
+<%end%>
+
 <hr class="style">
 <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
    <div>

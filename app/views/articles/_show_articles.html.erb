@@ -13,6 +13,17 @@
                </div>
             </div>
          </div>
+         <% if art.categories.any? %>
+            <br>
+            <span><strong>Categories: </strong></span>
+            <% art.categories.each do |category| %>
+               <span class="label label-info">
+                  <%= link_to category.name, 
+                              category_path(category), 
+                              style:"color:white;font-size:12px;"%>&nbsp;</span>
+            <% end %>
+            
+         <%end%>
          <% if logged_in? && (art.user == current_user || current_user.admin?) %> <!-- current_user returns a User obj -->
             <div class="row">
                <div class="col-md-12">

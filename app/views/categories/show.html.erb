@@ -1,1 +1,7 @@
-<h1>Show</h1>
+<h1 align="center">Category - <%=@category.name.upcase%></h1>
+<br>
+
+<%= render "articles/show_articles", obj: @category_articles%>
+
+<!--show up only if there are enough articles to next page-->
+<div align="center"><%= will_paginate @category_articles%></div>
